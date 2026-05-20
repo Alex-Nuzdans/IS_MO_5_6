@@ -17,8 +17,8 @@ if __name__ == '__main__':
     X_train, X_test, y_train, y_test = train_test_split(
         X, y, test_size=0.25, random_state=42)
     model = Models(X_train, X_test, y_train, y_test)
-    lr_res = model.linear_regression_model()
-    dt_res = model.tree_model()
+    lr_res = model.linear_regression_model(feature_names=features)
+    dt_res = model.tree_model(feature_names=features)
 
     print("\nСРАВНЕНИЕ:")
     print(f"{'Метрика':<8} {'Linear':<12} {'Tree':<12}")
@@ -29,4 +29,3 @@ if __name__ == '__main__':
     best_name = "Linear Regression" if lr_res['R2'] > dt_res['R2'] else "Decision Tree"
     analysis_obj = analysis()
     analysis_obj.graf(y_test, best_pred, best_name)
-

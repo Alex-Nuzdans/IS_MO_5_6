@@ -21,8 +21,7 @@ class Models:
         # Обучаем модель дерева решений
         dt_regressor = DecisionTreeRegressor(
             max_depth=3,  # глубина дерева
-            min_samples_split=15,  # мин. образцов для разделения
-            min_samples_leaf=8,  # мин. образцов в листе
+
             random_state=42
         )
 

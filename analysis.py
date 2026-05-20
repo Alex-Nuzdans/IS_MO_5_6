@@ -6,7 +6,7 @@ from sklearn.metrics import r2_score
 import seaborn as sns
 
 class analysis:
-    def graf(models,y_test,best_pred,best_name):
+    def graf(self,y_test,best_pred,best_name):
 
         plt.figure(figsize=(8, 8))
         plt.scatter(y_test, best_pred, alpha=0.5)
