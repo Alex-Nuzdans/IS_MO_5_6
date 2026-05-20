@@ -12,7 +12,7 @@ if __name__ == '__main__':
         analysis.plot_relationship(df, feature)
 
     target_column = 'medv'
-    X = df.drop(target_column, axis=1)
+    X = df[features]
     y = df[target_column]
     X_train, X_test, y_train, y_test = train_test_split(
         X, y, test_size=0.25, random_state=42)
@@ -29,4 +29,4 @@ if __name__ == '__main__':
     best_name = "Linear Regression" if lr_res['R2'] > dt_res['R2'] else "Decision Tree"
     analysis_obj = analysis()
     analysis_obj.graf(y_test, best_pred, best_name)
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+

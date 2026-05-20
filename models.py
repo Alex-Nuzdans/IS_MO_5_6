@@ -1,6 +1,5 @@
 from sklearn.linear_model import LinearRegression
 from sklearn.metrics import r2_score,mean_squared_error,mean_absolute_error
-from sklearn.preprocessing import StandardScaler
 from sklearn.tree import DecisionTreeRegressor
 import numpy as np
 
@@ -81,17 +80,13 @@ class Models:
         Линейная регрессия для решения задач регрессии.
         Метрики: MSE, RMSE, R².
         """
-        scaler = StandardScaler()
-        X_train_scaled = scaler.fit_transform(self.X_train)
-        X_test_scaled = scaler.transform(self.X_test)
-
         print("LinearRegression модель")
 
         model = LinearRegression()
-        model.fit(X_train_scaled, self.y_train)
+        model.fit(self.X_train, self.y_train)
 
-        y_train_pred_lr = model.predict(X_train_scaled)
-        self.y_lr_pred = model.predict(X_test_scaled)
+        y_train_pred_lr = model.predict(self.X_train)
+        self.y_lr_pred = model.predict(self.X_test)
 
         # --- ОБУЧАЮЩАЯ ВЫБОРКА ---
         mae_train = mean_absolute_error(self.y_train, y_train_pred_lr)
